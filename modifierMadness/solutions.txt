@@ -1,0 +1,24 @@
+
+(0): explicit Base(int)
+Only matching Base Constructor
+
+(1): explicit Base(int), Base.f(int) &&
+Only matching constructor, f && called as the expression is a rvalue.
+
+(2): Base(float), Base.f(int) &
+Must be Base(float) constructor as Base(int) prohibits implicit conversion.
+f& called as the expression is a lvalue within the function.
+
+(3): explicit Base(int)
+Same as (0)
+
+(4): Base.f(int) const &
+f const & called as the expression is a constant lvalue.
+
+(5): Base.f(int) &
+f & called as the expression is a lvalue but not constant,
+so non-constant functions get preferred.
+
+(6): explicit Base(int), Base.g(float) const &&
+Base(int) as it is lower in the implicit conversion rank.
+For the last one do not ask me why exactly.

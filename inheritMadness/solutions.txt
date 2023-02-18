@@ -1,0 +1,29 @@
+
+(1): Base.h(int,float)
+As DerivedAA is casted to DerivedA, there is no other known method.
+
+(2): DerivedA.f(int)
+This is a dynamic resolve, as the 'actual type' of the object is a DerivedA.
+
+(3): Base.f(int)
+Although the 'actual' type of the object is DerivedB, there is no f with a 
+matching signature.
+
+(4): Base.f(int)
+As the f(float) function is a overload and not a override, this function is statically resolved,
+which means it is not visible for the base2 object.
+
+(5): Base.h(int, float)
+As the Base.h is not virtual, it is statically resolved. 
+
+(6): DerivedA.g(float)
+As the assignment on line 13 was a cast, dA does not know about functions in DerivedAA.
+
+(7): DerivedA.f(int)
+As the assignment on line 13 was a cast, dA does not know about functions in DerivedAA.
+
+(8): DerivedB.h(int, float)
+As mentioned before, the function h is statically resolved.
+
+(9): 3
+Not sure why, but downcasting seems to produce a new seperate object.
